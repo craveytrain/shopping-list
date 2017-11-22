@@ -1,0 +1,27 @@
+{
+  "name": "shopping-list",
+  "version": "0.0.0",
+  "description": "A shopping list web app",
+  "main": "index.js",
+  "scripts": {
+    "build": "webpack -p",
+    "server": "babel-node --presets env ./src/server.js",
+    "start": "npm run build; npm run server",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "Mike Cravey <techie@craveytrain.com>",
+  "license": "ISC",
+  "dependencies": {
+    "ejs": "^2.5.7",
+    "express": "^4.16.2",
+    "morgan": "^1.9.0"
+  },
+  "devDependencies": {
+    "babel-cli": "^6.26.0",
+    "babel-core": "^6.26.0",
+    "babel-loader": "^7.1.2",
+    "babel-preset-env": "^1.6.1",
+    "nodemon": "^1.12.1",
+    "webpack": "^3.8.1"
+  }
+}

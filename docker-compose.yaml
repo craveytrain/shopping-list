@@ -1,0 +1,16 @@
+version: '3'
+services:
+  nginx:
+    image: nginx:1-alpine
+    volumes:
+     - ./config/nginx/nginx.conf:/etc/nginx/conf.d/nginx.conf
+     - ./public:/usr/share/nginx/html/public
+    ports:
+     - "3000:3000"
+
+  app:
+    build: .
+    ports:
+     - "3001:3001"
+    volumes:
+     - ./src:/code/src
