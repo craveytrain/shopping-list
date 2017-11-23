@@ -4,6 +4,7 @@ import morgan from 'morgan';
 import renderList from './pages/list';
 
 import renderListItem from './components/list-item/render';
+import renderListContainer from './components/list-container/render';
 
 const app = express();
 app.use(morgan('dev'));
@@ -16,6 +17,13 @@ app.use('/list-item', (req, res) => {
   res.send(renderListItem({
     title: req.query.title,
     checked: req.query.checked
+  }));
+});
+
+app.use('/list-container', (req, res) => {
+  res.send(renderListContainer({
+    title: req.query.title,
+    items: JSON.parse(req.query.items)
   }));
 });
 
