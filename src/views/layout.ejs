@@ -8,8 +8,19 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
   </head>
   <body>
-    <main id="app"><%- html %></main>
-    <script src="/public/js/document-register-element.js"></script>
-    <script src="/fragments.js" async></script>
+    <main id="root"><%- html %></main>
+
+    <!-- <script>
+      // WARNING: See the following for security issues around embedding JSON in HTML:
+      // http://redux.js.org/docs/recipes/ServerRendering.html#security-considerations
+      window.__PRELOADED_STATE__ = ${JSON.stringify(preloadedState).replace(/</g, '\\u003c')}
+    </script> -->
+
+    <!-- Dependencies -->
+    <!-- <script src="./node_modules/react/umd/react.development.js"></script>
+    <script src="./node_modules/react-dom/umd/react-dom.development.js"></script> -->
+
+    <!-- Main -->
+    <script src="/static/bundle.js"></script>
   </body>
 </html>

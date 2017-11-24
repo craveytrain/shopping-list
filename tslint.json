@@ -1,0 +1,7 @@
+{
+  "extends": ["tslint-react-recommended"],
+  "rules": {
+    "no-submodule-imports": false,
+    "no-implicit-dependencies": false
+  }
+}
