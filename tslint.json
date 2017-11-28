@@ -1,7 +1,23 @@
 {
-  "extends": ["tslint-react-recommended"],
+  "extends": [
+    "tslint:recommended",
+    "tslint-react"
+  ],
   "rules": {
-    "no-submodule-imports": false,
-    "no-implicit-dependencies": false
+    "arrow-parens": [
+      true,
+      "ban-single-arg-parens"
+    ],
+    "interface-name": false,
+    "object-literal-sort-keys": false,
+    "ordered-imports": false,
+    "quotemark": [
+      true,
+      "single",
+      "jsx-double",
+      "avoid-escape",
+      "avoid-template"
+    ],
+    "trailing-comma": false
   }
 }

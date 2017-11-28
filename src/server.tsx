@@ -5,11 +5,11 @@ import { compile } from 'ejs';
 import * as React from 'react';
 import * as morgan from 'morgan';
 import { StaticRouter } from 'react-router-dom';
-/*import { createStore } from 'redux';*/
-/*import { Provider } from 'react-redux';*/
-/*import counterApp from './reducers';*/
+import { createStore } from 'redux';
+import { Provider } from 'react-redux';
 import App from 'containers/app';
 import { renderToString } from 'react-dom/server';
+import * as serialize from 'serialize-javascript';
 
 const view = fs.readFileSync(path.join(__dirname, 'views', 'layout.ejs'), 'utf-8');
 const layout = compile(view);
