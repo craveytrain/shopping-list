@@ -1,0 +1,10 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`generateId should generate ids 1`] = `
+Array [
+  "92429d82a41e930486c6de5ebda9602d55c39986",
+  "4bf04ba0109e562f9bd0b3df1d59dfca76d1c6a7",
+  "94dd9e08c129c785f7f256e82fbe0a30e6d1ae40",
+  "4bf04ba0109e562f9bd0b3df1d59dfca76d1c6a7",
+]
+`;

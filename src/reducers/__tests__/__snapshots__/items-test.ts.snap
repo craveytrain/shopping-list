@@ -1,8 +1,104 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`items reducer sets items 1`] = `
+exports[`items reducer addItem should add an item to the list 1`] = `
 Array [
   Object {
+    "id": "milk",
+    "name": "Milk",
+  },
+  Object {
+    "checked": false,
+    "id": "107a8b69eed98af82d87dabc319af32faad6326f",
+    "name": "Leche",
+  },
+]
+`;
+
+exports[`items reducer can be used with reduce 1`] = `
+Array [
+  Object {
+    "checked": true,
+    "id": "milk",
+    "name": "Cow Milk",
+  },
+  Object {
+    "checked": false,
+    "id": "sheep-milk",
+    "name": "Sheep Milk",
+  },
+  Object {
+    "checked": false,
+    "id": "107a8b69eed98af82d87dabc319af32faad6326f",
+    "name": "Leche",
+  },
+]
+`;
+
+exports[`items reducer checkItem should check the selected item from the list 1`] = `
+Array [
+  Object {
+    "checked": false,
+    "id": "milk",
+    "name": "Milk",
+  },
+  Object {
+    "checked": true,
+    "id": "leche",
+    "name": "Leche",
+  },
+]
+`;
+
+exports[`items reducer removeItem should remove an item from the list 1`] = `
+Array [
+  Object {
+    "id": "leche",
+    "name": "Leche",
+  },
+]
+`;
+
+exports[`items reducer setCategory should set the category of the selected item from the list 1`] = `
+Array [
+  Object {
+    "category": "asdasdfadf",
+    "id": "leche",
+    "name": "Leche",
+  },
+]
+`;
+
+exports[`items reducer setItems should set items 1`] = `
+Array [
+  Object {
+    "name": "Leche",
+  },
+]
+`;
+
+exports[`items reducer setName should set the name of the selected item from the list 1`] = `
+Array [
+  Object {
+    "id": "milk",
+    "name": "Cow Milk",
+  },
+  Object {
+    "id": "leche",
+    "name": "Leche",
+  },
+]
+`;
+
+exports[`items reducer uncheckItem should uncheck the selected item from the list 1`] = `
+Array [
+  Object {
+    "checked": false,
+    "id": "milk",
+    "name": "Milk",
+  },
+  Object {
+    "checked": false,
+    "id": "leche",
     "name": "Leche",
   },
 ]

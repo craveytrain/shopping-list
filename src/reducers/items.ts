@@ -4,7 +4,7 @@ import {
   REMOVE_ITEM,
   CHECK_ITEM,
   UNCHECK_ITEM,
-  SET_TITLE,
+  SET_NAME,
   SET_CATEGORY
 } from 'actions/items';
 import generateId from 'lib/generateId';
@@ -27,8 +27,8 @@ const item = (state: object, action: ActionProps) => {
   switch (action.type) {
     case ADD_ITEM:
       return {
-        name: action.item,
-        id: generateId(action.item),
+        name: action.item.name,
+        id: generateId(action.item.name),
         checked: false
       };
 
@@ -36,6 +36,24 @@ const item = (state: object, action: ActionProps) => {
       return {
         ...state,
         checked: true
+      };
+
+    case UNCHECK_ITEM:
+      return {
+        ...state,
+        checked: false
+      };
+
+    case SET_NAME:
+      return {
+        ...state,
+        name: action.name
+      };
+
+    case SET_CATEGORY:
+      return {
+        ...state,
+        category: action.category
       };
 
     default:
@@ -60,6 +78,9 @@ const items = (state = [], action: object) => {
       return state.filter(f => f.id !== action.id);
 
     case CHECK_ITEM:
+    case UNCHECK_ITEM:
+    case SET_NAME:
+    case SET_CATEGORY:
       return state.map(i => item(i, action));
 
     default:
