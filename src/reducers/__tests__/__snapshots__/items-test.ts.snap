@@ -58,7 +58,7 @@ Array [
 ]
 `;
 
-exports[`items reducer setCategory should set the category of the selected item from the list 1`] = `
+exports[`items reducer setItemCategory should set the category of the selected item from the list 1`] = `
 Array [
   Object {
     "category": "asdasdfadf",
@@ -68,15 +68,7 @@ Array [
 ]
 `;
 
-exports[`items reducer setItems should set items 1`] = `
-Array [
-  Object {
-    "name": "Leche",
-  },
-]
-`;
-
-exports[`items reducer setName should set the name of the selected item from the list 1`] = `
+exports[`items reducer setItemName should set the name of the selected item from the list 1`] = `
 Array [
   Object {
     "id": "milk",
@@ -84,6 +76,14 @@ Array [
   },
   Object {
     "id": "leche",
+    "name": "Leche",
+  },
+]
+`;
+
+exports[`items reducer setItems should set items 1`] = `
+Array [
+  Object {
     "name": "Leche",
   },
 ]

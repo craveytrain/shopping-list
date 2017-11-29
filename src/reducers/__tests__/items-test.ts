@@ -5,8 +5,8 @@ import {
   removeItem,
   checkItem,
   uncheckItem,
-  setName,
-  setCategory
+  setItemName,
+  setItemCategory
 } from 'actions/items';
 import * as deepFreeze from 'deep-freeze';
 
@@ -119,7 +119,7 @@ describe('items reducer', () => {
     });
   });
 
-  describe('setName', () => {
+  describe('setItemName', () => {
     it('should set the name of the selected item from the list', () => {
       const initialState = [
         {
@@ -134,13 +134,13 @@ describe('items reducer', () => {
 
       deepFreeze(initialState);
 
-      const nextState = reducer(initialState, setName('milk', 'Cow Milk'));
+      const nextState = reducer(initialState, setItemName('milk', 'Cow Milk'));
 
       expect(nextState).toMatchSnapshot();
     });
   });
 
-  describe('setCategory', () => {
+  describe('setItemCategory', () => {
     it('should set the category of the selected item from the list', () => {
       const initialState = [
         {
@@ -151,7 +151,7 @@ describe('items reducer', () => {
 
       deepFreeze(initialState);
 
-      const nextState = reducer(initialState, setCategory('leche', 'asdasdfadf'));
+      const nextState = reducer(initialState, setItemCategory('leche', 'asdasdfadf'));
 
       expect(nextState).toMatchSnapshot();
     });
@@ -178,8 +178,8 @@ describe('items reducer', () => {
      addItem({
        name: 'Leche'
      }),
-     setName('milk', 'Cow Milk'),
-     setCategory('Leche', 'dairy'),
+     setItemName('milk', 'Cow Milk'),
+     setItemCategory('Leche', 'dairy'),
      removeItem('goat-milk'),
      checkItem('milk'),
      uncheckItem('sheep-milk')

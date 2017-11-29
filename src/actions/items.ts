@@ -28,16 +28,16 @@ export const uncheckItem = (id: string) => ({
   id
 });
 
-export const SET_NAME = 'SET_NAME';
-export const setName = (id: string, name: string) => ({
-  type: SET_NAME,
+export const SET_ITEM_NAME = 'SET_ITEM_NAME';
+export const setItemName = (id: string, name: string) => ({
+  type: SET_ITEM_NAME,
   id,
   name
 });
 
-export const SET_CATEGORY = 'SET_CATEGORY';
-export const setCategory = (id: string, category: string) => ({
-  type: SET_CATEGORY,
+export const SET_ITEM_CATEGORY = 'SET_ITEM_CATEGORY';
+export const setItemCategory = (id: string, category: string) => ({
+  type: SET_ITEM_CATEGORY,
   id,
   category
 });

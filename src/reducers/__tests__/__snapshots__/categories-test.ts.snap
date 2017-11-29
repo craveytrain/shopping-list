@@ -1,0 +1,57 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`categories reducer addCategory should add a category to the list 1`] = `
+Array [
+  Object {
+    "id": "dairy",
+    "name": "Dairy",
+  },
+  Object {
+    "id": "c90399f41b3fd3c0af1e10c70e03eb5369d79015",
+    "name": "Meat",
+  },
+]
+`;
+
+exports[`categories reducer can be used with reduce 1`] = `
+Array [
+  Object {
+    "id": "dairy",
+    "name": "Milk & Cheese",
+  },
+  Object {
+    "id": "c90399f41b3fd3c0af1e10c70e03eb5369d79015",
+    "name": "Meat",
+  },
+]
+`;
+
+exports[`categories reducer removeCategory should remove a category from the list 1`] = `
+Array [
+  Object {
+    "id": "meat",
+    "name": "Meat",
+  },
+]
+`;
+
+exports[`categories reducer setCategories should set categories 1`] = `
+Array [
+  Object {
+    "name": "Meat",
+  },
+]
+`;
+
+exports[`categories reducer setCategoryName should set the name of the selected category from the list 1`] = `
+Array [
+  Object {
+    "id": "dairy",
+    "name": "Milk & Cheese",
+  },
+  Object {
+    "id": "meat",
+    "name": "Meat",
+  },
+]
+`;

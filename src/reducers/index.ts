@@ -1,7 +1,8 @@
 import { combineReducers } from 'redux';
-import reduceReducers from 'reduce-reducers';
+import * as reduceReducers from 'reduce-reducers';
 import { SET_STATE } from 'actions';
 import items from './items';
+import categories from './categories';
 
 const reducer = (state = {}, action) => {
   switch (action.type) {
@@ -19,7 +20,8 @@ const reducer = (state = {}, action) => {
 
 export default reduceReducers(
   combineReducers({
-    items
+    items,
+    categories
   }),
   reducer
 );
