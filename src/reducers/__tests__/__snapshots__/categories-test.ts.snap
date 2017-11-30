@@ -26,6 +26,19 @@ Array [
 ]
 `;
 
+exports[`categories reducer nameCategory should set the name of the selected category from the list 1`] = `
+Array [
+  Object {
+    "id": "dairy",
+    "name": "Milk & Cheese",
+  },
+  Object {
+    "id": "meat",
+    "name": "Meat",
+  },
+]
+`;
+
 exports[`categories reducer removeCategory should remove a category from the list 1`] = `
 Array [
   Object {
@@ -38,19 +51,6 @@ Array [
 exports[`categories reducer setCategories should set categories 1`] = `
 Array [
   Object {
-    "name": "Meat",
-  },
-]
-`;
-
-exports[`categories reducer setCategoryName should set the name of the selected category from the list 1`] = `
-Array [
-  Object {
-    "id": "dairy",
-    "name": "Milk & Cheese",
-  },
-  Object {
-    "id": "meat",
     "name": "Meat",
   },
 ]

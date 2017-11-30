@@ -1,21 +1,11 @@
 import {
-  SET_CATEGORIES,
-  ADD_CATEGORY,
-  REMOVE_CATEGORY,
-  SET_CATEGORY_NAME,
-  CategoryProps
+  TypeKeys,
+  Category,
+  ActionTypes
 } from 'actions/categories';
 import generateId from 'lib/generateId';
 
-export interface ActionProps {
-  type: string;
-  categories?: CategoryProps[];
-  category?: CategoryProps;
-  id?: string;
-  name?: string;
-}
-
-const category = (state: object, action: ActionProps) => {
+const category = (state: Category, action: ActionTypes): Category => {
   // this is not the droid you are looking for
   // works because ADD_CATEGORY isn't passed a state
   if (state && state.id !== action.id) {
@@ -23,13 +13,13 @@ const category = (state: object, action: ActionProps) => {
   }
 
   switch (action.type) {
-    case ADD_CATEGORY:
+    case TypeKeys.ADD:
       return {
         name: action.category.name,
         id: generateId(action.category.name)
       };
 
-    case SET_CATEGORY_NAME:
+    case TypeKeys.NAME:
       return {
         ...state,
         name: action.name
@@ -42,21 +32,21 @@ const category = (state: object, action: ActionProps) => {
   return state;
 };
 
-const categories = (state = [], action: object) => {
+const categories = (state: Category[] = [], action: ActionTypes): Category[] => {
   switch (action.type) {
-    case SET_CATEGORIES:
+    case TypeKeys.SET:
       return action.categories;
 
-    case ADD_CATEGORY:
+    case TypeKeys.ADD:
       return [
         ...state,
         category(undefined, action)
       ];
 
-    case REMOVE_CATEGORY:
+    case TypeKeys.REMOVE:
       return state.filter(f => f.id !== action.id);
 
-    case SET_CATEGORY_NAME:
+    case TypeKeys.NAME:
       return state.map(i => category(i, action));
 
     default:

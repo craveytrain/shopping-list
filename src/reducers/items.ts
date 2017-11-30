@@ -1,23 +1,11 @@
 import {
-  SET_ITEMS,
-  ADD_ITEM,
-  REMOVE_ITEM,
-  CHECK_ITEM,
-  UNCHECK_ITEM,
-  SET_ITEM_NAME,
-  SET_ITEM_CATEGORY
+  TypeKeys,
+  Item,
+  ActionTypes
 } from 'actions/items';
 import generateId from 'lib/generateId';
 
-export interface ActionProps {
-  type: string;
-  item?: object;
-  id?: string;
-  name?: string;
-  category?: string;
-}
-
-const item = (state: object, action: ActionProps) => {
+const item = (state: Item, action: ActionTypes): Item => {
   // this is not the droid you are looking for
   // works because ADD_ITEM isn't passed a state
   if (state && state.id !== action.id) {
@@ -25,32 +13,32 @@ const item = (state: object, action: ActionProps) => {
   }
 
   switch (action.type) {
-    case ADD_ITEM:
+    case TypeKeys.ADD:
       return {
         name: action.item.name,
         id: generateId(action.item.name),
         checked: false
       };
 
-    case CHECK_ITEM:
+    case TypeKeys.CHECK:
       return {
         ...state,
         checked: true
       };
 
-    case UNCHECK_ITEM:
+    case TypeKeys.UNCHECK:
       return {
         ...state,
         checked: false
       };
 
-    case SET_ITEM_NAME:
+    case TypeKeys.NAME:
       return {
         ...state,
         name: action.name
       };
 
-    case SET_ITEM_CATEGORY:
+    case TypeKeys.CATEGORIZE:
       return {
         ...state,
         category: action.category
@@ -63,24 +51,24 @@ const item = (state: object, action: ActionProps) => {
   return state;
 };
 
-const items = (state = [], action: object) => {
+const items = (state: Item[] = [], action: ActionTypes): Item[] => {
   switch (action.type) {
-    case SET_ITEMS:
+    case TypeKeys.SET:
       return action.items;
 
-    case ADD_ITEM:
+    case TypeKeys.ADD:
       return [
         ...state,
         item(undefined, action)
       ];
 
-    case REMOVE_ITEM:
+    case TypeKeys.REMOVE:
       return state.filter(f => f.id !== action.id);
 
-    case CHECK_ITEM:
-    case UNCHECK_ITEM:
-    case SET_ITEM_NAME:
-    case SET_ITEM_CATEGORY:
+    case TypeKeys.CHECK:
+    case TypeKeys.UNCHECK:
+    case TypeKeys.NAME:
+    case TypeKeys.CATEGORIZE:
       return state.map(i => item(i, action));
 
     default:

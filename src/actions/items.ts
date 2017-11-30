@@ -1,43 +1,101 @@
-export const SET_ITEMS = 'SET_ITEMS';
-export const setItems = (items: object[]) => ({
-  type: SET_ITEMS,
+export interface Item {
+  name: string;
+  id?: string;
+  checked?: boolean;
+  category?: string;
+}
+
+export enum TypeKeys {
+  SET = 'SET_ITEMS',
+  ADD = 'ADD_ITEM',
+  REMOVE = 'REMOVE_ITEM',
+  CHECK = 'CHECK_ITEM',
+  UNCHECK = 'UNCHECK_ITEM',
+  NAME = 'NAME_ITEM',
+  CATEGORIZE = 'CATEGORIZE_ITEM',
+}
+
+interface SetItemsAction {
+  type: TypeKeys.SET;
+  items: Item[];
+  id?: string; // TODO: ghost prop to pass typechecking
+}
+
+interface AddItemAction {
+  type: TypeKeys.ADD;
+  item: Item;
+  id?: string; // TODO: ghost prop to pass typechecking
+}
+
+interface RemoveItemAction {
+  type: TypeKeys.REMOVE;
+  id: string;
+}
+
+interface CheckItemAction {
+  type: TypeKeys.CHECK;
+  id: string;
+}
+
+interface UncheckItemAction {
+  type: TypeKeys.UNCHECK;
+  id: string;
+}
+
+interface NameItemAction {
+  type: TypeKeys.NAME;
+  id: string;
+  name: string;
+}
+
+interface CategorizeItemAction {
+  type: TypeKeys.CATEGORIZE;
+  id: string;
+  category: string;
+}
+
+export type ActionTypes =
+  | SetItemsAction
+  | AddItemAction
+  | RemoveItemAction
+  | CheckItemAction
+  | UncheckItemAction
+  | NameItemAction
+  | CategorizeItemAction;
+
+export const setItems = (items: Item[]): SetItemsAction => ({
+  type: TypeKeys.SET,
   items
 });
 
-export const ADD_ITEM = 'ADD_ITEM';
-export const addItem = (item: object) => ({
-  type: ADD_ITEM,
+export const addItem = (item: Item): AddItemAction => ({
+  type: TypeKeys.ADD,
   item
 });
 
-export const REMOVE_ITEM = 'REMOVE_ITEM';
-export const removeItem = (id: string) => ({
-  type: REMOVE_ITEM,
+export const removeItem = (id: string): RemoveItemAction => ({
+  type: TypeKeys.REMOVE,
   id
 });
 
-export const CHECK_ITEM = 'CHECK_ITEM';
-export const checkItem = (id: string) => ({
-  type: CHECK_ITEM,
+export const checkItem = (id: string): CheckItemAction => ({
+  type: TypeKeys.CHECK,
   id
 });
 
-export const UNCHECK_ITEM = 'UNCHECK_ITEM';
-export const uncheckItem = (id: string) => ({
-  type: UNCHECK_ITEM,
+export const uncheckItem = (id: string): UncheckItemAction => ({
+  type: TypeKeys.UNCHECK,
   id
 });
 
-export const SET_ITEM_NAME = 'SET_ITEM_NAME';
-export const setItemName = (id: string, name: string) => ({
-  type: SET_ITEM_NAME,
+export const nameItem = (id: string, name: string): NameItemAction => ({
+  type: TypeKeys.NAME,
   id,
   name
 });
 
-export const SET_ITEM_CATEGORY = 'SET_ITEM_CATEGORY';
-export const setItemCategory = (id: string, category: string) => ({
-  type: SET_ITEM_CATEGORY,
+export const categorizeItem = (id: string, category: string): CategorizeItemAction => ({
+  type: TypeKeys.CATEGORIZE,
   id,
   category
 });

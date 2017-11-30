@@ -34,6 +34,16 @@ Array [
 ]
 `;
 
+exports[`items reducer categorizeItem should set the category of the selected item from the list 1`] = `
+Array [
+  Object {
+    "category": "asdasdfadf",
+    "id": "leche",
+    "name": "Leche",
+  },
+]
+`;
+
 exports[`items reducer checkItem should check the selected item from the list 1`] = `
 Array [
   Object {
@@ -49,31 +59,21 @@ Array [
 ]
 `;
 
-exports[`items reducer removeItem should remove an item from the list 1`] = `
-Array [
-  Object {
-    "id": "leche",
-    "name": "Leche",
-  },
-]
-`;
-
-exports[`items reducer setItemCategory should set the category of the selected item from the list 1`] = `
-Array [
-  Object {
-    "category": "asdasdfadf",
-    "id": "leche",
-    "name": "Leche",
-  },
-]
-`;
-
-exports[`items reducer setItemName should set the name of the selected item from the list 1`] = `
+exports[`items reducer nameItem should set the name of the selected item from the list 1`] = `
 Array [
   Object {
     "id": "milk",
     "name": "Cow Milk",
   },
+  Object {
+    "id": "leche",
+    "name": "Leche",
+  },
+]
+`;
+
+exports[`items reducer removeItem should remove an item from the list 1`] = `
+Array [
   Object {
     "id": "leche",
     "name": "Leche",

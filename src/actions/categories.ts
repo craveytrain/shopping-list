@@ -1,29 +1,61 @@
-export interface CategoryProps {
+export interface Category {
   name: string;
   id?: string;
 }
 
-export const SET_CATEGORIES = 'SET_CATEGORIES';
-export const setCategories = (categories: CategoryProps[]) => ({
-  type: SET_CATEGORIES,
-  categories
+export enum TypeKeys {
+  SET = 'SET_CATEGORIES',
+  ADD = 'ADD_CATEGORY',
+  REMOVE = 'REMOVE_CATEGORY',
+  NAME = 'SET_CATEGORY_NAME',
+}
+
+interface SetCategoriesAction {
+  type: TypeKeys.SET;
+  categories: Category[];
+  id?: string; // TODO: ghost prop to pass typechecking
+}
+
+interface AddCategoryAction {
+  type: TypeKeys.ADD;
+  category: Category;
+  id?: string; // TODO: ghost prop to pass typechecking
+}
+
+interface RemoveCategoryAction {
+  type: TypeKeys.REMOVE;
+  id: string;
+}
+
+interface NameCategoryAction {
+  type: TypeKeys.NAME;
+  id: string;
+  name: string;
+}
+
+export type ActionTypes =
+  | SetCategoriesAction
+  | AddCategoryAction
+  | RemoveCategoryAction
+  | NameCategoryAction;
+
+export const setCategories = (categories: Category[]): SetCategoriesAction => ({
+    type: TypeKeys.SET,
+    categories
 });
 
-export const ADD_CATEGORY = 'ADD_CATEGORY';
-export const addCategory = (category: CategoryProps) => ({
-  type: ADD_CATEGORY,
+export const addCategory = (category: Category): AddCategoryAction => ({
+  type: TypeKeys.ADD,
   category
 });
 
-export const REMOVE_CATEGORY = 'REMOVE_CATEGORY';
-export const removeCategory = (id: string) => ({
-  type: REMOVE_CATEGORY,
+export const removeCategory = (id: string): RemoveCategoryAction => ({
+  type: TypeKeys.REMOVE,
   id
 });
 
-export const SET_CATEGORY_NAME = 'SET_CATEGORY_NAME';
-export const setCategoryName = (id: string, name: string) => ({
-  type: SET_CATEGORY_NAME,
+export const nameCategory = (id: string, name: string): NameCategoryAction => ({
+  type: TypeKeys.NAME,
   id,
   name
 });

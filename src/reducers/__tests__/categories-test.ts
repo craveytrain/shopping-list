@@ -3,7 +3,7 @@ import {
   setCategories,
   addCategory,
   removeCategory,
-  setCategoryName
+  nameCategory
 } from 'actions/categories';
 import * as deepFreeze from 'deep-freeze';
 
@@ -70,7 +70,7 @@ describe('categories reducer', () => {
     });
   });
 
-  describe('setCategoryName', () => {
+  describe('nameCategory', () => {
     it('should set the name of the selected category from the list', () => {
       const initialState = [
         {
@@ -85,7 +85,7 @@ describe('categories reducer', () => {
 
       deepFreeze(initialState);
 
-      const nextState = reducer(initialState, setCategoryName('dairy', 'Milk & Cheese'));
+      const nextState = reducer(initialState, nameCategory('dairy', 'Milk & Cheese'));
 
       expect(nextState).toMatchSnapshot();
     });
@@ -106,7 +106,7 @@ describe('categories reducer', () => {
      addCategory({
        name: 'Meat'
      }),
-     setCategoryName('dairy', 'Milk & Cheese'),
+     nameCategory('dairy', 'Milk & Cheese'),
      removeCategory('produce')
    ];
 
