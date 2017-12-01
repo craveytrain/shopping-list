@@ -1,8 +1,4 @@
-import {
-  TypeKeys,
-  Item,
-  ActionTypes
-} from 'actions/items';
+import { TypeKeys, Item, ActionTypes } from 'actions/items';
 import generateId from 'lib/generateId';
 
 const item = (state: Item, action: ActionTypes): Item => {
@@ -16,20 +12,14 @@ const item = (state: Item, action: ActionTypes): Item => {
     case TypeKeys.ADD:
       return {
         name: action.item.name,
-        id: generateId(action.item.name),
+        id: action.item.id || generateId(action.item.name),
         checked: false
       };
 
-    case TypeKeys.CHECK:
+    case TypeKeys.TOGGLE:
       return {
         ...state,
-        checked: true
-      };
-
-    case TypeKeys.UNCHECK:
-      return {
-        ...state,
-        checked: false
+        checked: !state.checked
       };
 
     case TypeKeys.NAME:
@@ -65,8 +55,7 @@ const items = (state: Item[] = [], action: ActionTypes): Item[] => {
     case TypeKeys.REMOVE:
       return state.filter(f => f.id !== action.id);
 
-    case TypeKeys.CHECK:
-    case TypeKeys.UNCHECK:
+    case TypeKeys.TOGGLE:
     case TypeKeys.NAME:
     case TypeKeys.CATEGORIZE:
       return state.map(i => item(i, action));

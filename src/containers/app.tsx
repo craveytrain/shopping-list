@@ -1,11 +1,13 @@
 import * as React from 'react';
-import Header from 'containers/header';
-import Main from 'containers/main';
+import AddItem from 'containers/item-add';
+import VisibleItemList from 'containers/visible-item-list';
+import ItemToolbar from 'components/item-toolbar';
 
 const App = () => (
   <div>
-    <Header />
-    <Main />
+    <AddItem />
+    <VisibleItemList />
+    <ItemToolbar />
   </div>
 );
 

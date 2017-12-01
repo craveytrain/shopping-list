@@ -9,46 +9,40 @@ export enum TypeKeys {
   SET = 'SET_ITEMS',
   ADD = 'ADD_ITEM',
   REMOVE = 'REMOVE_ITEM',
-  CHECK = 'CHECK_ITEM',
-  UNCHECK = 'UNCHECK_ITEM',
+  TOGGLE = 'TOGGLE_ITEM',
   NAME = 'NAME_ITEM',
-  CATEGORIZE = 'CATEGORIZE_ITEM',
+  CATEGORIZE = 'CATEGORIZE_ITEM'
 }
 
-interface SetItemsAction {
+export interface SetItemsAction {
   type: TypeKeys.SET;
   items: Item[];
   id?: string; // TODO: ghost prop to pass typechecking
 }
 
-interface AddItemAction {
+export interface AddItemAction {
   type: TypeKeys.ADD;
   item: Item;
   id?: string; // TODO: ghost prop to pass typechecking
 }
 
-interface RemoveItemAction {
+export interface RemoveItemAction {
   type: TypeKeys.REMOVE;
   id: string;
 }
 
-interface CheckItemAction {
-  type: TypeKeys.CHECK;
+export interface ToggleItemAction {
+  type: TypeKeys.TOGGLE;
   id: string;
 }
 
-interface UncheckItemAction {
-  type: TypeKeys.UNCHECK;
-  id: string;
-}
-
-interface NameItemAction {
+export interface NameItemAction {
   type: TypeKeys.NAME;
   id: string;
   name: string;
 }
 
-interface CategorizeItemAction {
+export interface CategorizeItemAction {
   type: TypeKeys.CATEGORIZE;
   id: string;
   category: string;
@@ -58,8 +52,7 @@ export type ActionTypes =
   | SetItemsAction
   | AddItemAction
   | RemoveItemAction
-  | CheckItemAction
-  | UncheckItemAction
+  | ToggleItemAction
   | NameItemAction
   | CategorizeItemAction;
 
@@ -70,7 +63,7 @@ export const setItems = (items: Item[]): SetItemsAction => ({
 
 export const addItem = (item: Item): AddItemAction => ({
   type: TypeKeys.ADD,
-  item
+  item: typeof item === 'string' ? { name: item } : item
 });
 
 export const removeItem = (id: string): RemoveItemAction => ({
@@ -78,13 +71,8 @@ export const removeItem = (id: string): RemoveItemAction => ({
   id
 });
 
-export const checkItem = (id: string): CheckItemAction => ({
-  type: TypeKeys.CHECK,
-  id
-});
-
-export const uncheckItem = (id: string): UncheckItemAction => ({
-  type: TypeKeys.UNCHECK,
+export const toggleItem = (id: string): ToggleItemAction => ({
+  type: TypeKeys.TOGGLE,
   id
 });
 

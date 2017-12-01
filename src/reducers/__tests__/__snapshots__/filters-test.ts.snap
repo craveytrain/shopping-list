@@ -1,0 +1,25 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`filters reducer can be used with reduce 1`] = `
+Object {
+  "visibility": "SHOW_CHECKED",
+}
+`;
+
+exports[`filters reducer visibilityFilter should set visibility to SHOW_ALL 1`] = `
+Object {
+  "visibility": "SHOW_ALL",
+}
+`;
+
+exports[`filters reducer visibilityFilter should set visibility to SHOW_CHECKED 1`] = `
+Object {
+  "visibility": "SHOW_CHECKED",
+}
+`;
+
+exports[`filters reducer visibilityFilter should set visibility to SHOW_UNCHECKED 1`] = `
+Object {
+  "visibility": "SHOW_UNCHECKED",
+}
+`;

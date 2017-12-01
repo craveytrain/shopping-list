@@ -1,8 +1,4 @@
-import {
-  TypeKeys,
-  Category,
-  ActionTypes
-} from 'actions/categories';
+import { TypeKeys, Category, ActionTypes } from 'actions/categories';
 import generateId from 'lib/generateId';
 
 const category = (state: Category, action: ActionTypes): Category => {

@@ -14,17 +14,27 @@ Array [
 ]
 `;
 
-exports[`items reducer can be used with reduce 1`] = `
+exports[`items reducer addItem should respect the id if given 1`] = `
 Array [
   Object {
-    "checked": true,
     "id": "milk",
-    "name": "Cow Milk",
+    "name": "Milk",
   },
   Object {
     "checked": false,
-    "id": "sheep-milk",
-    "name": "Sheep Milk",
+    "id": "leche",
+    "name": "Leche",
+  },
+]
+`;
+
+exports[`items reducer can be used with reduce 1`] = `
+Array [
+  Object {
+    "category": "dairy",
+    "checked": true,
+    "id": "milk",
+    "name": "Cow Milk",
   },
   Object {
     "checked": false,
@@ -38,21 +48,6 @@ exports[`items reducer categorizeItem should set the category of the selected it
 Array [
   Object {
     "category": "asdasdfadf",
-    "id": "leche",
-    "name": "Leche",
-  },
-]
-`;
-
-exports[`items reducer checkItem should check the selected item from the list 1`] = `
-Array [
-  Object {
-    "checked": false,
-    "id": "milk",
-    "name": "Milk",
-  },
-  Object {
-    "checked": true,
     "id": "leche",
     "name": "Leche",
   },
@@ -89,7 +84,22 @@ Array [
 ]
 `;
 
-exports[`items reducer uncheckItem should uncheck the selected item from the list 1`] = `
+exports[`items reducer toggleItem should check the selected item from the list 1`] = `
+Array [
+  Object {
+    "checked": true,
+    "id": "milk",
+    "name": "Milk",
+  },
+  Object {
+    "checked": false,
+    "id": "leche",
+    "name": "Leche",
+  },
+]
+`;
+
+exports[`items reducer toggleItem should uncheck the selected item from the list 1`] = `
 Array [
   Object {
     "checked": false,

@@ -7,7 +7,7 @@ export enum TypeKeys {
   SET = 'SET_CATEGORIES',
   ADD = 'ADD_CATEGORY',
   REMOVE = 'REMOVE_CATEGORY',
-  NAME = 'SET_CATEGORY_NAME',
+  NAME = 'SET_CATEGORY_NAME'
 }
 
 interface SetCategoriesAction {
@@ -40,8 +40,8 @@ export type ActionTypes =
   | NameCategoryAction;
 
 export const setCategories = (categories: Category[]): SetCategoriesAction => ({
-    type: TypeKeys.SET,
-    categories
+  type: TypeKeys.SET,
+  categories
 });
 
 export const addCategory = (category: Category): AddCategoryAction => ({

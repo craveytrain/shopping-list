@@ -1,17 +1,17 @@
 {
-    "compilerOptions": {
-      "baseUrl": "./src/",
-      "paths": {
-        "*": ["./*"]
-      },
-      "outDir": "./dist/",
-      "sourceMap": true,
-      "noImplicitAny": true,
-      "module": "commonjs",
-      "target": "es5",
-      "jsx": "react"
+  "compilerOptions": {
+    "allowJs": true,
+    "baseUrl": "./src/",
+    "paths": {
+      "*": ["./*"]
     },
-    "include": [
-        "./src/**/*"
-    ]
+    "outDir": "./dist/",
+    "sourceMap": true,
+    "noImplicitAny": true,
+    "module": "commonjs",
+    "skipLibCheck": true,
+    "target": "es5",
+    "jsx": "react"
+  },
+  "exclude": ["**/*-test.ts"]
 }

@@ -14,8 +14,11 @@ root: true
 rules:
   accessor-pairs: 2
   array-bracket-spacing:
-    - 0
-    - never
+    - 1
+    - always
+    -
+      arraysInArrays: false
+      objectsInArrays: false
   array-callback-return: 2
   arrow-body-style:
     - 2
