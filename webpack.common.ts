@@ -2,7 +2,6 @@ import * as webpack from 'webpack';
 import { lstatSync, readdirSync } from 'fs';
 import { join } from 'path';
 import { BundleAnalyzerPlugin } from 'webpack-bundle-analyzer';
-import * as  CleanWebpackPlugin from 'clean-webpack-plugin';
 
 const getDirectories = (source: string) =>
 readdirSync(source)
@@ -13,17 +12,14 @@ readdirSync(source)
   )
 ;
 
-const dest = 'static';
-const src = 'src';
-const srcDir = join(__dirname, src);
+export const dest = 'static';
+export const src = 'src';
+export const srcDir = join(__dirname, src);
 
 const config: webpack.Configuration = {
-  entry: `./${src}/client.tsx`,
-  output: {
-    filename: 'bundle.js',
-    path: join(__dirname, dest),
-    publicPath: `/${dest}`
-  },
+  entry: [
+    `./${src}/client.tsx`
+  ],
 
   // Enable sourcemaps for debugging webpack's output.
   devtool: 'source-map',
@@ -33,6 +29,13 @@ const config: webpack.Configuration = {
     // Add '.ts' and '.tsx' as resolvable extensions.
     extensions: [ '.ts', '.tsx', '.js', '.json' ]
   },
+
+  plugins: [
+    new BundleAnalyzerPlugin({
+      analyzerMode: 'static',
+      openAnalyzer: false
+    })
+  ],
 
   module: {
     rules: [
@@ -51,13 +54,10 @@ const config: webpack.Configuration = {
     ]
   },
 
-  plugins: [
-    new CleanWebpackPlugin([ dest ]),
-    new BundleAnalyzerPlugin({
-      analyzerMode: 'static',
-      openAnalyzer: false
-    })
-  ]
+  output: {
+    path: join(__dirname, dest),
+    publicPath: `/${dest}`
+  },
 
   // When importing a module whose path matches one of the following, just
   // assume a corresponding global variable exists and use that instead.

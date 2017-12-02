@@ -11,17 +11,7 @@
     <main id="root"><%- html %></main>
     <script>window.__PRELOADED_STATE__=<%- state %>;</script>
 
-    <!-- <script>
-      // WARNING: See the following for security issues around embedding JSON in HTML:
-      // http://redux.js.org/docs/recipes/ServerRendering.html#security-considerations
-      window.__PRELOADED_STATE__ = ${JSON.stringify(preloadedState).replace(/</g, '\\u003c')}
-    </script> -->
-
-    <!-- Dependencies -->
-    <!-- <script src="./node_modules/react/umd/react.development.js"></script>
-    <script src="./node_modules/react-dom/umd/react-dom.development.js"></script> -->
-
     <!-- Main -->
-    <script src="/static/bundle.js"></script>
+    <script src="/static/<%- assets['main.js'] %>"></script>
   </body>
 </html>

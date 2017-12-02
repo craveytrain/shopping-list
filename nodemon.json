@@ -1,5 +1,5 @@
 {
   "watch": "src",
   "ext": "ts tsx jsx js",
-  "exec": "npm start"
+  "exec": "npm server"
 }
