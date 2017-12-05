@@ -1,18 +1,16 @@
-import { join, basename, extname } from 'path';
+import { basename, extname, resolve } from 'path';
 import * as fs from 'fs';
 import * as express from 'express';
-import { compile } from 'ejs';
 import * as React from 'react';
 import * as morgan from 'morgan';
 import { StaticRouter } from 'react-router-dom';
 import { createStore } from 'redux';
 import { Provider } from 'react-redux';
 import { renderToString } from 'react-dom/server';
-import * as serialize from 'serialize-javascript';
+import template from './template';
 import * as webpack from 'webpack';
 import * as  webpackDevMiddleware from 'webpack-dev-middleware';
 import * as  webpackHotMiddleware from 'webpack-hot-middleware';
-import config from '../webpack.dev';
 
 import state from 'data/state';
 
@@ -20,11 +18,6 @@ import App from 'containers/app';
 import reducer from 'reducers';
 
 const env = process.env.NODE_ENV || 'development';
-
-const compiler = webpack(config);
-
-const view = fs.readFileSync(join(__dirname, 'views', 'layout.ejs'), 'utf-8');
-const layout = compile(view);
 
 const store = createStore(
   reducer,
@@ -39,8 +32,13 @@ let manifest: any;
 let normalizeAssets: (assets: any) => any;
 
 if (env === 'production') {
-  manifest = fs.readFileSync(join(config.output.path, 'manifest.json'), 'utf-8');
+  // tslint:disable-next-line no-var-requires
+  const { dest } = require('../webpack.common');
+  manifest = JSON.parse(fs.readFileSync(resolve(__dirname, '..', dest, 'manifest.json'), 'utf-8'));
 } else {
+  // tslint:disable-next-line no-var-requires
+  const config = require('../webpack.dev');
+  const compiler = webpack(config);
   // Serve static files
   app.use(webpackDevMiddleware(compiler, {
     publicPath: config.output.publicPath,
@@ -75,10 +73,10 @@ app.use((req: any, res: any) => {
     </Provider>
   );
 
-  res.send(layout({
+  res.send(template({
     html,
     assets: manifest,
-    state: serialize(store.getState())
+    state: store.getState()
   }));
 });
 

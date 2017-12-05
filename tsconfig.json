@@ -1,11 +1,11 @@
 {
   "compilerOptions": {
     "allowJs": true,
-    "baseUrl": "./src/",
+    "baseUrl": "src",
     "paths": {
       "*": ["./*"]
     },
-    "outDir": "./dist/",
+    "outDir": "dist",
     "sourceMap": true,
     "noImplicitAny": true,
     "module": "commonjs",
@@ -13,5 +13,10 @@
     "target": "es5",
     "jsx": "react"
   },
-  "exclude": ["**/*-test.ts"]
+  "include": [
+    "src/**/*"
+  ],
+  "exclude": [
+    "**/*-test.ts"
+  ]
 }

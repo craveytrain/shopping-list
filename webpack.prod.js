@@ -1,13 +1,11 @@
-import * as webpack from 'webpack';
-import * as merge from 'webpack-merge';
-import * as CleanWebpackPlugin from 'clean-webpack-plugin';
-import * as ManifestPlugin from 'webpack-manifest-plugin';
-// tslint:disable-next-line no-var-requires
+const webpack = require('webpack');
+const merge = require('webpack-merge');
+const CleanWebpackPlugin = require('clean-webpack-plugin');
+const ManifestPlugin = require('webpack-manifest-plugin');
 const UglifyJsPlugin = require('uglifyjs-webpack-plugin');
+const { config: common, dest } = require('./webpack.common');
 
-import common, { dest } from './webpack.common';
-
-const config: webpack.Configuration = {
+const config = {
   plugins: [
     new CleanWebpackPlugin([ dest ]),
     new ManifestPlugin(),
@@ -27,4 +25,4 @@ const config: webpack.Configuration = {
   }
 };
 
-export default merge(common, config);
+module.exports = merge(common, config);

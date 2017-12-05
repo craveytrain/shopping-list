@@ -1,3 +1,6 @@
+import * as serialize from 'serialize-javascript';
+
+const template = ({ html, assets, state }: {html: string, assets: any, state: any}): string => `
 <!doctype html>
 <html lang="en">
   <head>
@@ -8,10 +11,13 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
   </head>
   <body>
-    <main id="root"><%- html %></main>
-    <script>window.__PRELOADED_STATE__=<%- state %>;</script>
+    <main id="root">${html}</main>
+    <script>window.__PRELOADED_STATE__=${serialize(state)};</script>
 
     <!-- Main -->
-    <script src="/static/<%- assets['main.js'] %>"></script>
+    <script src="/static/${assets['main.js']}"></script>
   </body>
 </html>
+`;
+
+export default template;
