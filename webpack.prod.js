@@ -10,7 +10,7 @@ const config = {
     new CleanWebpackPlugin([ dest ]),
     new ManifestPlugin(),
     new webpack.optimize.CommonsChunkPlugin({
-      name: 'runtime'
+      name: 'manifest'
     }),
     new UglifyJsPlugin({
       sourceMap: true

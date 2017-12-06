@@ -10,4 +10,4 @@ COPY . /code
 RUN yarn install
 
 EXPOSE 3001
-CMD [ "npm", "run", "server" ]
+CMD [ "npm", "run", "start" ]

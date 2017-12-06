@@ -14,7 +14,7 @@ const template = ({ html, assets, state }: {html: string, assets: any, state: an
     <main id="root">${html}</main>
     <script>window.__PRELOADED_STATE__=${serialize(state)};</script>
 
-    <!-- Main -->
+    <script src="/static/${assets['manifest.js']}"></script>
     <script src="/static/${assets['main.js']}"></script>
   </body>
 </html>

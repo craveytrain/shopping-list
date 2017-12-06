@@ -1,4 +1,4 @@
-import { basename, extname, resolve } from 'path';
+import { extname, resolve } from 'path';
 import * as fs from 'fs';
 import * as express from 'express';
 import * as React from 'react';
@@ -18,6 +18,7 @@ import App from 'containers/app';
 import reducer from 'reducers';
 
 const env = process.env.NODE_ENV || 'development';
+const port = process.env.NODE_PORT || 3001;
 
 const store = createStore(
   reducer,
@@ -26,7 +27,6 @@ const store = createStore(
 
 const app = express();
 app.use(morgan('dev'));
-const port = 3001;
 
 let manifest: any;
 let normalizeAssets: (assets: any) => any;
