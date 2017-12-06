@@ -1,6 +1,9 @@
 const webpack = require('webpack');
 const merge = require('webpack-merge');
 const { config: common } = require('./webpack.common');
+const ExtractTextPlugin = require('extract-text-webpack-plugin');
+
+const fileNamePattern = '[name]';
 
 const config = {
   entry: [
@@ -8,11 +11,12 @@ const config = {
   ],
 
   plugins: [
+    new ExtractTextPlugin(`${fileNamePattern}.css`),
     new webpack.HotModuleReplacementPlugin()
   ],
 
   output: {
-    filename: '[name].js'
+    filename: `${fileNamePattern}.js`
   }
 };
 

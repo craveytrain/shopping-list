@@ -4,14 +4,15 @@ const CleanWebpackPlugin = require('clean-webpack-plugin');
 const ManifestPlugin = require('webpack-manifest-plugin');
 const UglifyJsPlugin = require('uglifyjs-webpack-plugin');
 const { config: common, dest } = require('./webpack.common');
+const ExtractTextPlugin = require('extract-text-webpack-plugin');
+
+const fileNamePattern = '[name].[chunkhash:8]';
 
 const config = {
   plugins: [
     new CleanWebpackPlugin([ dest ]),
     new ManifestPlugin(),
-    new webpack.optimize.CommonsChunkPlugin({
-      name: 'manifest'
-    }),
+    new ExtractTextPlugin(`${fileNamePattern}.css`),
     new UglifyJsPlugin({
       sourceMap: true
     }),
@@ -21,7 +22,7 @@ const config = {
   ],
 
   output: {
-    filename: '[name].[chunkhash:8].js'
+    filename: `${fileNamePattern}.js`
   }
 };
 
