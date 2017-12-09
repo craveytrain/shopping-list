@@ -7,7 +7,7 @@ import {
   nameItem,
   categorizeItem
 } from 'actions/items';
-import * as deepFreeze from 'deep-freeze';
+import deepFreeze from 'deep-freeze';
 
 describe('items reducer', () => {
   describe('setItems', () => {

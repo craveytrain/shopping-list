@@ -1,6 +1,6 @@
-import { TypeKeys, Filters, ActionTypes } from 'actions/filters';
+import { TypeKeys } from 'actions/filters';
 
-const filters = (state: Filters = {}, action: ActionTypes): Filters => {
+const filters = (state = {}, action) => {
   switch (action.type) {
     case TypeKeys.VISIBILITY:
       return {

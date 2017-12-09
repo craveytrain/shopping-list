@@ -1,4 +1,5 @@
-import * as React from 'react';
+/* global window, document */
+import React from 'react';
 import { hydrate } from 'react-dom';
 import { createStore } from 'redux';
 import { Provider } from 'react-redux';
@@ -7,22 +8,24 @@ import { BrowserRouter } from 'react-router-dom';
 import reducer from 'reducers';
 
 // Grab the state from a global variable injected into the server-generated HTML
-const preloadedState = (window as any).__PRELOADED_STATE__;
+const preloadedState = window.__PRELOADED_STATE__;
 
 // Allow the passed state to be garbage-collected
-delete (window as any).__PRELOADED_STATE__;
+delete window.__PRELOADED_STATE__;
 
 // Create Redux store with initial state
 const store = createStore(
   reducer,
   preloadedState,
-  (window as any).__REDUX_DEVTOOLS_EXTENSION__ &&
-  (window as any).__REDUX_DEVTOOLS_EXTENSION__()
+  window.__REDUX_DEVTOOLS_EXTENSION__ &&
+  window.__REDUX_DEVTOOLS_EXTENSION__()
 );
 
 hydrate(
   <Provider store={store}>
-    <App />
+    <BrowserRouter>
+      <App />
+    </BrowserRouter>
   </Provider>,
   document.getElementById('root')
 );

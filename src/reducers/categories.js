@@ -1,7 +1,7 @@
-import { TypeKeys, Category, ActionTypes } from 'actions/categories';
+import { TypeKeys } from 'actions/categories';
 import generateId from 'lib/generateId';
 
-const category = (state: Category, action: ActionTypes): Category => {
+const category = (state, action) => {
   // this is not the droid you are looking for
   // works because ADD_CATEGORY isn't passed a state
   if (state && state.id !== action.id) {
@@ -28,7 +28,7 @@ const category = (state: Category, action: ActionTypes): Category => {
   return state;
 };
 
-const categories = (state: Category[] = [], action: ActionTypes): Category[] => {
+const categories = (state = [], action) => {
   switch (action.type) {
     case TypeKeys.SET:
       return action.categories;

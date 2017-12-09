@@ -1,13 +1,12 @@
 import { connect } from 'react-redux';
 import { visibilityFilter } from 'actions/filters';
 import ToggleLink from 'components/toggle-link';
-import { State  } from 'reducers';
 
-const mapStateToProps = (state: State, ownProps: any) => ({
+const mapStateToProps = (state, ownProps) => ({
   active: ownProps.filter === state.filters.visibility
 });
 
-const mapDispatchToProps = (dispatch: any, ownProps: any) => ({
+const mapDispatchToProps = (dispatch, ownProps) => ({
   onClick: () => dispatch(visibilityFilter(ownProps.filter))
 });
 

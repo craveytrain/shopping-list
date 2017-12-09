@@ -1,5 +1,5 @@
 {
   "watch": "src",
-  "ext": "ts tsx jsx js",
+  "ext": "jsx js",
   "exec": "yarn run dev"
 }

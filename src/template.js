@@ -1,6 +1,6 @@
-import * as serialize from 'serialize-javascript';
+import serialize from 'serialize-javascript';
 
-const template = ({ html, assets, state }: {html: string, assets: any, state: any}): string => `
+const template = ({ html, assets, state }) => `
 <!doctype html>
 <html lang="en">
   <head>

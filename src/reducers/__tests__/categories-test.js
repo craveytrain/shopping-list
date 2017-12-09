@@ -5,7 +5,7 @@ import {
   removeCategory,
   nameCategory
 } from 'actions/categories';
-import * as deepFreeze from 'deep-freeze';
+import deepFreeze from 'deep-freeze';
 
 describe('categories reducer', () => {
   describe('setCategories', () => {

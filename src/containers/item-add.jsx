@@ -1,11 +1,12 @@
-import * as React from 'react';
+import React from 'react';
+import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
-import { addItem, AddItemAction } from 'actions/items';
+import { addItem } from 'actions/items';
 
-export const AddItem = ({dispatch}: {dispatch: any}) => {
-  let input: any;
+export const AddItem = ({dispatch}) => {
+  let input;
 
-  const onSubmit = (e: any) => {
+  const onSubmit = (e) => {
     e.preventDefault();
 
     const value = input.value.trim();
@@ -18,7 +19,7 @@ export const AddItem = ({dispatch}: {dispatch: any}) => {
     input.value = '';
   };
 
-  const inputRef = (i: any) => {
+  const inputRef = (i) => {
     input = i;
   };
 
@@ -36,6 +37,10 @@ export const AddItem = ({dispatch}: {dispatch: any}) => {
       </form>
     </div>
   );
+};
+
+AddItem.propTypes = {
+  dispatch: PropTypes.func
 };
 
 export default connect()(AddItem);

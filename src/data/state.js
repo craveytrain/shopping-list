@@ -1,7 +1,4 @@
-import { Item } from 'actions/items';
-import { Category } from 'actions/categories';
-
-const items = [
+export const items = [
   {
     name: 'Steak',
     id: 'steak',
@@ -16,7 +13,7 @@ const items = [
   }
 ];
 
-const categories = [
+export const categories = [
   {
     name: 'Meat',
     id: 'meat'
@@ -26,11 +23,6 @@ const categories = [
     id: 'produce'
   }
 ];
-
-export interface State {
-  items: Item[];
-  categories: Category[];
-}
 
 export default {
   items,

@@ -2,7 +2,7 @@ import reducer from 'reducers/filters';
 import {
   visibilityFilter
 } from 'actions/filters';
-import * as deepFreeze from 'deep-freeze';
+import deepFreeze from 'deep-freeze';
 
 describe('filters reducer', () => {
   describe('visibilityFilter', () => {

@@ -1,7 +1,7 @@
-import { TypeKeys, Item, ActionTypes } from 'actions/items';
+import { TypeKeys } from 'actions/items';
 import generateId from 'lib/generateId';
 
-const item = (state: Item, action: ActionTypes): Item => {
+const item = (state, action) => {
   // this is not the droid you are looking for
   // works because ADD_ITEM isn't passed a state
   if (state && state.id !== action.id) {
@@ -41,7 +41,7 @@ const item = (state: Item, action: ActionTypes): Item => {
   return state;
 };
 
-const items = (state: Item[] = [], action: ActionTypes): Item[] => {
+const items = (state = [], action) => {
   switch (action.type) {
     case TypeKeys.SET:
       return action.items;

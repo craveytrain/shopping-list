@@ -1,10 +1,8 @@
 import { connect } from 'react-redux';
-import { toggleItem, Item } from 'actions/items';
-import { Visability } from 'actions/filters';
+import { toggleItem } from 'actions/items';
 import ItemList from 'components/item-list';
-import { State } from 'reducers';
 
-const getVisibleItems = (items: Item[], filter: Visability): Item[] => {
+const getVisibleItems = (items, filter) => {
   switch (filter) {
     case 'SHOW_CHECKED':
       return items.filter(i => i.checked);
@@ -16,12 +14,12 @@ const getVisibleItems = (items: Item[], filter: Visability): Item[] => {
   }
 };
 
-const mapStateToProps = (state: State): { items: Item[] } => ({
+const mapStateToProps = (state) => ({
   items: getVisibleItems(state.items, state.filters.visibility)
 });
 
-const mapDispatchToProps = (dispatch: any): any => ({
-  onItemClick: (id: string) => dispatch(toggleItem(id))
+const mapDispatchToProps = (dispatch) => ({
+  onItemClick: id => dispatch(toggleItem(id))
 });
 
 const VisibleItemList = connect(
