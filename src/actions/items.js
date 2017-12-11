@@ -33,8 +33,8 @@ export const nameItem = (id, name) => ({
   name
 });
 
-export const categorizeItem = (id, category) => ({
+export const categorizeItem = (id, categoryId) => ({
   type: TypeKeys.CATEGORIZE,
   id,
-  category
+  categoryId
 });

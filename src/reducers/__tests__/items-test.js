@@ -164,7 +164,7 @@ describe('items reducer', () => {
   });
 
   describe('categorizeItem', () => {
-    it('should set the category of the selected item from the list', () => {
+    it('should set the categoryId of the selected item from the list', () => {
       const initialState = [
         {
           name: 'Leche',

@@ -4,7 +4,7 @@ import Item from 'components/item';
 import { List } from 'rmwc/List';
 
 const ItemList = ({items, onItemClick}) => (
-  <List>
+  <List twoLine={true}>
     {items.map(item => <Item key={item.id} onClick={onItemClick.bind(this, item.id)} {...item} />)}
   </List>
 );

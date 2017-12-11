@@ -31,7 +31,7 @@ const item = (state, action) => {
     case TypeKeys.CATEGORIZE:
       return {
         ...state,
-        category: action.category
+        categoryId: action.categoryId
       };
 
     default:

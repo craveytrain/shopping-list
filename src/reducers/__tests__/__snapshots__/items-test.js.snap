@@ -31,7 +31,7 @@ Array [
 exports[`items reducer can be used with reduce 1`] = `
 Array [
   Object {
-    "category": "dairy",
+    "categoryId": "dairy",
     "checked": true,
     "id": "milk",
     "name": "Cow Milk",
@@ -44,10 +44,10 @@ Array [
 ]
 `;
 
-exports[`items reducer categorizeItem should set the category of the selected item from the list 1`] = `
+exports[`items reducer categorizeItem should set the categoryId of the selected item from the list 1`] = `
 Array [
   Object {
-    "category": "asdasdfadf",
+    "categoryId": "asdasdfadf",
     "id": "leche",
     "name": "Leche",
   },
