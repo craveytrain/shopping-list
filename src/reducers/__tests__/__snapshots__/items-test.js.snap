@@ -1,115 +1,150 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
+exports[`items reducer addItem should add an item by string 1`] = `
+Object {
+  "allIds": Array [
+    "107a8b69eed98af82d87dabc319af32faad6326f",
+  ],
+  "byId": Object {
+    "107a8b69eed98af82d87dabc319af32faad6326f": Object {
+      "checked": false,
+      "id": "107a8b69eed98af82d87dabc319af32faad6326f",
+      "name": "Leche",
+    },
+  },
+}
+`;
+
 exports[`items reducer addItem should add an item to the list 1`] = `
-Array [
-  Object {
-    "id": "milk",
-    "name": "Milk",
+Object {
+  "allIds": Array [
+    "107a8b69eed98af82d87dabc319af32faad6326f",
+  ],
+  "byId": Object {
+    "107a8b69eed98af82d87dabc319af32faad6326f": Object {
+      "checked": false,
+      "id": "107a8b69eed98af82d87dabc319af32faad6326f",
+      "name": "Leche",
+    },
   },
-  Object {
-    "checked": false,
-    "id": "107a8b69eed98af82d87dabc319af32faad6326f",
-    "name": "Leche",
-  },
-]
+}
 `;
 
 exports[`items reducer addItem should respect the id if given 1`] = `
-Array [
-  Object {
-    "id": "milk",
-    "name": "Milk",
+Object {
+  "allIds": Array [
+    "leche",
+  ],
+  "byId": Object {
+    "leche": Object {
+      "checked": false,
+      "id": "leche",
+      "name": "Leche",
+    },
   },
-  Object {
-    "checked": false,
-    "id": "leche",
-    "name": "Leche",
-  },
-]
+}
 `;
 
 exports[`items reducer can be used with reduce 1`] = `
-Array [
-  Object {
-    "categoryId": "dairy",
-    "checked": true,
-    "id": "milk",
-    "name": "Cow Milk",
+Object {
+  "allIds": Array [
+    "milk",
+    "107a8b69eed98af82d87dabc319af32faad6326f",
+  ],
+  "byId": Object {
+    "107a8b69eed98af82d87dabc319af32faad6326f": Object {
+      "checked": false,
+      "id": "107a8b69eed98af82d87dabc319af32faad6326f",
+      "name": "Leche",
+    },
+    "milk": Object {
+      "categoryId": "dairy",
+      "checked": true,
+      "id": "milk",
+      "name": "Cow Milk",
+    },
   },
-  Object {
-    "checked": false,
-    "id": "107a8b69eed98af82d87dabc319af32faad6326f",
-    "name": "Leche",
-  },
-]
+}
 `;
 
 exports[`items reducer categorizeItem should set the categoryId of the selected item from the list 1`] = `
-Array [
-  Object {
-    "categoryId": "asdasdfadf",
-    "id": "leche",
-    "name": "Leche",
+Object {
+  "allIds": Array [
+    "leche",
+  ],
+  "byId": Object {
+    "leche": Object {
+      "categoryId": "asdasdfadf",
+      "name": "Leche",
+    },
   },
-]
+}
 `;
 
 exports[`items reducer nameItem should set the name of the selected item from the list 1`] = `
-Array [
-  Object {
-    "id": "milk",
-    "name": "Cow Milk",
+Object {
+  "allIds": Array [
+    "milk",
+    "leche",
+  ],
+  "byId": Object {
+    "leche": Object {
+      "name": "Leche",
+    },
+    "milk": Object {
+      "name": "Cow Milk",
+    },
   },
-  Object {
-    "id": "leche",
-    "name": "Leche",
-  },
-]
+}
 `;
 
 exports[`items reducer removeItem should remove an item from the list 1`] = `
-Array [
-  Object {
-    "id": "leche",
-    "name": "Leche",
+Object {
+  "allIds": Array [
+    "leche",
+  ],
+  "byId": Object {
+    "leche": Object {
+      "name": "Leche",
+    },
   },
-]
-`;
-
-exports[`items reducer setItems should set items 1`] = `
-Array [
-  Object {
-    "name": "Leche",
-  },
-]
+}
 `;
 
 exports[`items reducer toggleItem should check the selected item from the list 1`] = `
-Array [
-  Object {
-    "checked": true,
-    "id": "milk",
-    "name": "Milk",
+Object {
+  "allIds": Array [
+    "milk",
+    "leche",
+  ],
+  "byId": Object {
+    "leche": Object {
+      "checked": false,
+      "name": "Leche",
+    },
+    "milk": Object {
+      "checked": true,
+      "name": "Milk",
+    },
   },
-  Object {
-    "checked": false,
-    "id": "leche",
-    "name": "Leche",
-  },
-]
+}
 `;
 
 exports[`items reducer toggleItem should uncheck the selected item from the list 1`] = `
-Array [
-  Object {
-    "checked": false,
-    "id": "milk",
-    "name": "Milk",
+Object {
+  "allIds": Array [
+    "milk",
+    "leche",
+  ],
+  "byId": Object {
+    "leche": Object {
+      "checked": false,
+      "name": "Leche",
+    },
+    "milk": Object {
+      "checked": false,
+      "name": "Milk",
+    },
   },
-  Object {
-    "checked": false,
-    "id": "leche",
-    "name": "Leche",
-  },
-]
+}
 `;

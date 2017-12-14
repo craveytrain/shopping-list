@@ -1,57 +1,92 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`categories reducer addCategory should add a category to the list 1`] = `
-Array [
-  Object {
-    "id": "dairy",
-    "name": "Dairy",
+Object {
+  "allIds": Array [
+    "c90399f41b3fd3c0af1e10c70e03eb5369d79015",
+  ],
+  "byId": Object {
+    "c90399f41b3fd3c0af1e10c70e03eb5369d79015": Object {
+      "id": "c90399f41b3fd3c0af1e10c70e03eb5369d79015",
+      "name": "Meat",
+    },
   },
-  Object {
-    "id": "c90399f41b3fd3c0af1e10c70e03eb5369d79015",
-    "name": "Meat",
+}
+`;
+
+exports[`categories reducer addCategory should add a category to the list by string 1`] = `
+Object {
+  "allIds": Array [
+    "c90399f41b3fd3c0af1e10c70e03eb5369d79015",
+  ],
+  "byId": Object {
+    "c90399f41b3fd3c0af1e10c70e03eb5369d79015": Object {
+      "id": "c90399f41b3fd3c0af1e10c70e03eb5369d79015",
+      "name": "Meat",
+    },
   },
-]
+}
+`;
+
+exports[`categories reducer addCategory should add a category to the list with an id 1`] = `
+Object {
+  "allIds": Array [
+    "meat",
+  ],
+  "byId": Object {
+    "meat": Object {
+      "id": "meat",
+      "name": "Meat",
+    },
+  },
+}
 `;
 
 exports[`categories reducer can be used with reduce 1`] = `
-Array [
-  Object {
-    "id": "dairy",
-    "name": "Milk & Cheese",
+Object {
+  "allIds": Array [
+    "dairy",
+    "c90399f41b3fd3c0af1e10c70e03eb5369d79015",
+  ],
+  "byId": Object {
+    "c90399f41b3fd3c0af1e10c70e03eb5369d79015": Object {
+      "id": "c90399f41b3fd3c0af1e10c70e03eb5369d79015",
+      "name": "Meat",
+    },
+    "dairy": Object {
+      "id": "dairy",
+      "name": "Milk & Cheese",
+    },
   },
-  Object {
-    "id": "c90399f41b3fd3c0af1e10c70e03eb5369d79015",
-    "name": "Meat",
-  },
-]
+}
 `;
 
 exports[`categories reducer nameCategory should set the name of the selected category from the list 1`] = `
-Array [
-  Object {
-    "id": "dairy",
-    "name": "Milk & Cheese",
+Object {
+  "allIds": Array [
+    "dairy",
+    "meat",
+  ],
+  "byId": Object {
+    "dairy": Object {
+      "name": "Milk & Cheese",
+    },
+    "meat": Object {
+      "name": "Meat",
+    },
   },
-  Object {
-    "id": "meat",
-    "name": "Meat",
-  },
-]
+}
 `;
 
 exports[`categories reducer removeCategory should remove a category from the list 1`] = `
-Array [
-  Object {
-    "id": "meat",
-    "name": "Meat",
+Object {
+  "allIds": Array [
+    "meat",
+  ],
+  "byId": Object {
+    "meat": Object {
+      "name": "Meat",
+    },
   },
-]
-`;
-
-exports[`categories reducer setCategories should set categories 1`] = `
-Array [
-  Object {
-    "name": "Meat",
-  },
-]
+}
 `;

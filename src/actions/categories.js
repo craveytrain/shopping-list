@@ -1,19 +1,19 @@
+import generateId from 'lib/generateId';
+
 export const TypeKeys = {
-  SET: 'SET_CATEGORIES',
   ADD: 'ADD_CATEGORY',
   REMOVE: 'REMOVE_CATEGORY',
   NAME: 'SET_CATEGORY_NAME'
 };
 
-export const setCategories = categories => ({
-  type: TypeKeys.SET,
-  categories
-});
+export const addCategory = category => {
+  const id = category.id || generateId(typeof category === 'string' ? category : category.name);
 
-export const addCategory = category => ({
-  type: TypeKeys.ADD,
-  category
-});
+  return {
+    type: TypeKeys.ADD,
+    category: typeof category === 'string' ? { name: category, id } : { ...category, id }
+  };
+};
 
 export const removeCategory = id => ({
   type: TypeKeys.REMOVE,

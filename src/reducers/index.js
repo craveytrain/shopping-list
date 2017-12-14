@@ -6,6 +6,6 @@ import filters from './filters';
 
 export default combineReducers({
   categories,
-  filters,
-  items
+  items,
+  filters
 });

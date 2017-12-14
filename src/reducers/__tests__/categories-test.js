@@ -1,6 +1,5 @@
 import reducer from 'reducers/categories';
 import {
-  setCategories,
   addCategory,
   removeCategory,
   nameCategory
@@ -8,43 +7,21 @@ import {
 import deepFreeze from 'deep-freeze';
 
 describe('categories reducer', () => {
-  describe('setCategories', () => {
-    it('should set categories', () => {
-      const initialState = [
-        {
-          name: 'Dairy',
-          id: 'dairy'
-        }
-      ];
-
-      deepFreeze(initialState);
-
+  describe('addCategory', () => {
+    it('should add a category to the list', () => {
       const nextState = reducer(
-        initialState,
-        setCategories([
-          {
-            name: 'Meat'
-          }
-        ])
+        {},
+        addCategory({
+          name: 'Meat'
+        })
       );
 
       expect(nextState).toMatchSnapshot();
     });
-  });
 
-  describe('addCategory', () => {
-    it('should add a category to the list', () => {
-      const initialState = [
-        {
-          name: 'Dairy',
-          id: 'dairy'
-        }
-      ];
-
-      deepFreeze(initialState);
-
+    it('should add a category to the list with an id', () => {
       const nextState = reducer(
-        initialState,
+        {},
         addCategory({
           name: 'Meat',
           id: 'meat'
@@ -53,20 +30,30 @@ describe('categories reducer', () => {
 
       expect(nextState).toMatchSnapshot();
     });
+
+    it('should add a category to the list by string', () => {
+      const nextState = reducer(
+        {},
+        addCategory('Meat')
+      );
+
+      expect(nextState).toMatchSnapshot();
+    });
   });
 
   describe('removeCategory', () => {
     it('should remove a category from the list', () => {
-      const initialState = [
-        {
-          name: 'Dairy',
-          id: 'dairy'
+      const initialState = {
+        byId: {
+          dairy: {
+            name: 'Dairy'
+          },
+          meat: {
+            name: 'Meat'
+          }
         },
-        {
-          name: 'Meat',
-          id: 'meat'
-        }
-      ];
+        allIds: [ 'dairy', 'meat' ]
+      };
 
       deepFreeze(initialState);
 
@@ -78,16 +65,17 @@ describe('categories reducer', () => {
 
   describe('nameCategory', () => {
     it('should set the name of the selected category from the list', () => {
-      const initialState = [
-        {
-          name: 'Dairy',
-          id: 'dairy'
+      const initialState = {
+        byId: {
+          dairy: {
+            name: 'Dairy'
+          },
+          meat: {
+            name: 'Meat'
+          }
         },
-        {
-          name: 'Meat',
-          id: 'meat'
-        }
-      ];
+        allIds: [ 'dairy', 'meat' ]
+      };
 
       deepFreeze(initialState);
 
@@ -102,16 +90,14 @@ describe('categories reducer', () => {
 
   it('can be used with reduce', () => {
     const actionQueue = [
-      setCategories([
-        {
-          name: 'Dairy',
-          id: 'dairy'
-        },
-        {
-          name: 'Produce',
-          id: 'produce'
-        }
-      ]),
+      addCategory({
+        id: 'dairy',
+        name: 'Dairy'
+      }),
+      addCategory({
+        name: 'Produce',
+        id: 'produce'
+      }),
       addCategory({
         name: 'Meat'
       }),
@@ -119,7 +105,7 @@ describe('categories reducer', () => {
       removeCategory('produce')
     ];
 
-    const finalState = actionQueue.reduce(reducer, []);
+    const finalState = actionQueue.reduce(reducer, {});
 
     expect(finalState).toMatchSnapshot();
   });

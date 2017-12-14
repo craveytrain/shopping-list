@@ -1,18 +1,13 @@
+/* eslint-disable default-case */
+import { combineReducers } from 'redux';
+import { omit } from 'lodash';
 import { TypeKeys } from 'actions/items';
-import generateId from 'lib/generateId';
 
 const item = (state, action) => {
-  // this is not the droid you are looking for
-  // works because ADD_ITEM isn't passed a state
-  if (state && state.id !== action.id) {
-    return state;
-  }
-
   switch (action.type) {
     case TypeKeys.ADD:
       return {
-        name: action.item.name,
-        id: action.item.id || generateId(action.item.name),
+        ...action.item,
         checked: false
       };
 
@@ -33,38 +28,53 @@ const item = (state, action) => {
         ...state,
         categoryId: action.categoryId
       };
-
-    default:
   }
 
   // otherwise, just return the state
   return state;
 };
 
-const items = (state = [], action) => {
+const itemsById = (state = {}, action) => {
   switch (action.type) {
-    case TypeKeys.SET:
-      return action.items;
-
     case TypeKeys.ADD:
-      return [
+      return {
         ...state,
-        item(undefined, action)
-      ];
+        [action.item.id]: item(undefined, action)
+      };
 
     case TypeKeys.REMOVE:
-      return state.filter(f => f.id !== action.id);
+      return omit(state, [ action.id ]);
 
     case TypeKeys.TOGGLE:
     case TypeKeys.NAME:
     case TypeKeys.CATEGORIZE:
-      return state.map(i => item(i, action));
-
-    default:
+      return {
+        ...state,
+        [action.id]: item(state[action.id], action)
+      };
   }
 
   // otherwise, just return the state
   return state;
 };
 
-export default items;
+const allItems = (state = [], action) => {
+  switch (action.type) {
+    case TypeKeys.ADD:
+      return [
+        ...state,
+        action.item.id
+      ];
+
+    case TypeKeys.REMOVE:
+      return state.filter(id => id !== action.id);
+  }
+
+  // otherwise, just return the state
+  return state;
+};
+
+export default combineReducers({
+  byId: itemsById,
+  allIds: allItems
+});

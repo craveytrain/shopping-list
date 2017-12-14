@@ -1,6 +1,5 @@
 import reducer from 'reducers/items';
 import {
-  setItems,
   addItem,
   removeItem,
   toggleItem,
@@ -10,43 +9,10 @@ import {
 import deepFreeze from 'deep-freeze';
 
 describe('items reducer', () => {
-  describe('setItems', () => {
-    it('should set items', () => {
-      const initialState = [
-        {
-          name: 'Milk',
-          id: 'milk'
-        }
-      ];
-
-      deepFreeze(initialState);
-
-      const nextState = reducer(
-        initialState,
-        setItems([
-          {
-            name: 'Leche'
-          }
-        ])
-      );
-
-      expect(nextState).toMatchSnapshot();
-    });
-  });
-
   describe('addItem', () => {
     it('should add an item to the list', () => {
-      const initialState = [
-        {
-          name: 'Milk',
-          id: 'milk'
-        }
-      ];
-
-      deepFreeze(initialState);
-
       const nextState = reducer(
-        initialState,
+        {},
         addItem({
           name: 'Leche'
         })
@@ -56,17 +22,8 @@ describe('items reducer', () => {
     });
 
     it('should respect the id if given', () => {
-      const initialState = [
-        {
-          name: 'Milk',
-          id: 'milk'
-        }
-      ];
-
-      deepFreeze(initialState);
-
       const nextState = reducer(
-        initialState,
+        {},
         addItem({
           name: 'Leche',
           id: 'leche'
@@ -75,20 +32,30 @@ describe('items reducer', () => {
 
       expect(nextState).toMatchSnapshot();
     });
+
+    it('should add an item by string', () => {
+      const nextState = reducer(
+        {},
+        addItem('Leche')
+      );
+
+      expect(nextState).toMatchSnapshot();
+    });
   });
 
   describe('removeItem', () => {
     it('should remove an item from the list', () => {
-      const initialState = [
-        {
-          name: 'Milk',
-          id: 'milk'
+      const initialState = {
+        byId: {
+          milk: {
+            name: 'Milk'
+          },
+          leche: {
+            name: 'Leche'
+          }
         },
-        {
-          name: 'Leche',
-          id: 'leche'
-        }
-      ];
+        allIds: [ 'milk', 'leche' ]
+      };
 
       deepFreeze(initialState);
 
@@ -100,18 +67,19 @@ describe('items reducer', () => {
 
   describe('toggleItem', () => {
     it('should check the selected item from the list', () => {
-      const initialState = [
-        {
-          name: 'Milk',
-          id: 'milk',
-          checked: false
+      const initialState = {
+        byId: {
+          milk: {
+            name: 'Milk',
+            checked: false
+          },
+          leche: {
+            name: 'Leche',
+            checked: false
+          }
         },
-        {
-          name: 'Leche',
-          id: 'leche',
-          checked: false
-        }
-      ];
+        allIds: [ 'milk', 'leche' ]
+      };
 
       deepFreeze(initialState);
 
@@ -121,18 +89,19 @@ describe('items reducer', () => {
     });
 
     it('should uncheck the selected item from the list', () => {
-      const initialState = [
-        {
-          name: 'Milk',
-          id: 'milk',
-          checked: false
+      const initialState = {
+        byId: {
+          milk: {
+            name: 'Milk',
+            checked: false
+          },
+          leche: {
+            name: 'Leche',
+            checked: true
+          }
         },
-        {
-          name: 'Leche',
-          id: 'leche',
-          checked: true
-        }
-      ];
+        allIds: [ 'milk', 'leche' ]
+      };
 
       deepFreeze(initialState);
 
@@ -144,16 +113,17 @@ describe('items reducer', () => {
 
   describe('nameItem', () => {
     it('should set the name of the selected item from the list', () => {
-      const initialState = [
-        {
-          name: 'Milk',
-          id: 'milk'
+      const initialState = {
+        byId: {
+          milk: {
+            name: 'Milk'
+          },
+          leche: {
+            name: 'Leche'
+          }
         },
-        {
-          name: 'Leche',
-          id: 'leche'
-        }
-      ];
+        allIds: [ 'milk', 'leche' ]
+      };
 
       deepFreeze(initialState);
 
@@ -165,12 +135,14 @@ describe('items reducer', () => {
 
   describe('categorizeItem', () => {
     it('should set the categoryId of the selected item from the list', () => {
-      const initialState = [
-        {
-          name: 'Leche',
-          id: 'leche'
-        }
-      ];
+      const initialState = {
+        byId: {
+          leche: {
+            name: 'Leche'
+          }
+        },
+        allIds: [ 'leche' ]
+      };
 
       deepFreeze(initialState);
 
@@ -185,26 +157,24 @@ describe('items reducer', () => {
 
   it('can be used with reduce', () => {
     const actionQueue = [
-      setItems([
-        {
-          name: 'Milk',
-          id: 'milk'
-        },
-        {
-          name: 'Goat Milk',
-          id: 'goat-milk'
-        }
-      ]),
+      addItem({
+        id: 'milk',
+        name: 'Milk'
+      }),
+      addItem({
+        id: 'goatMilk',
+        name: 'Goat Milk'
+      }),
       addItem({
         name: 'Leche'
       }),
       nameItem('milk', 'Cow Milk'),
       categorizeItem('milk', 'dairy'),
-      removeItem('goat-milk'),
+      removeItem('goatMilk'),
       toggleItem('milk')
     ];
 
-    const finalState = actionQueue.reduce(reducer, []);
+    const finalState = actionQueue.reduce(reducer, {});
 
     expect(finalState).toMatchSnapshot();
   });

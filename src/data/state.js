@@ -1,30 +1,39 @@
-export const items = [
-  {
-    name: 'Steak',
-    id: 'steak',
-    checked: false,
-    categoryId: 'meat'
+export const items = {
+  byId: {
+    steak: {
+      id: 'steak',
+      name: 'Steak',
+      checked: false,
+      categoryId: 'meat'
+    },
+    potatoes: {
+      id: 'potatoes',
+      name: 'Potatoes',
+      checked: false,
+      categoryId: 'produce'
+    }
   },
-  {
-    name: 'Potatoes',
-    id: 'potatoes',
-    checked: false,
-    categoryId: 'produce'
-  }
-];
+  allIds: [ 'steak', 'potatoes' ]
+};
 
-export const categories = [
-  {
-    name: 'Meat',
-    id: 'meat'
+export const categories = {
+  byId: {
+    meat: {
+      id: 'meat',
+      name: 'Meat'
+    },
+    produce: {
+      id: 'produce',
+      name: 'Produce'
+    }
   },
-  {
-    name: 'Produce',
-    id: 'produce'
-  }
-];
+  allIds: [ 'meat', 'produce' ]
+};
 
 export default {
   items,
-  categories
+  categories,
+  filters: {
+    visibility: 'SHOW_ALL'
+  }
 };
