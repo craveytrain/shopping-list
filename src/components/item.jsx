@@ -9,8 +9,10 @@ export const Item = ({name, checked, category, onClick}) => (
     style={{textDecoration: checked ? 'line-through' : 'none'}}
     onClick={onClick}
   >
-    <ListItemText>{name}</ListItemText>
-    <ListItemTextSecondary>{category}</ListItemTextSecondary>
+    <ListItemText>
+      {name}
+      <ListItemTextSecondary>{category}</ListItemTextSecondary>
+    </ListItemText>
   </ListItem>
 );
 
@@ -21,9 +23,18 @@ Item.propTypes = {
   onClick: PropTypes.func
 };
 
-const mapStateToProps = (state, ownProps) => ({
-  category: state.categories.find(category => ownProps.categoryId === category.id).name
-});
+const mapStateToProps = (state, ownProps) => {
+  if (ownProps.categoryId) {
+    const category = state.categories.byId[ownProps.categoryId];
+    if (category.name) {
+      return {
+        category: category.name
+      };
+    }
+  }
+
+  return {};
+};
 
 export default connect(
   mapStateToProps

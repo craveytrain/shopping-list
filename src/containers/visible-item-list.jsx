@@ -3,14 +3,15 @@ import { toggleItem } from 'actions/items';
 import ItemList from 'components/item-list';
 
 const getVisibleItems = (items, filter) => {
+  const visibleItems = items.allIds.map(id => items.byId[id]);
   switch (filter) {
     case 'SHOW_CHECKED':
-      return items.filter(i => i.checked);
+      return visibleItems.filter(i => i.checked);
     case 'SHOW_UNCHECKED':
-      return items.filter(i => !i.checked);
+      return visibleItems.filter(i => !i.checked);
     case 'SHOW_ALL':
     default:
-      return items;
+      return visibleItems;
   }
 };
 
